@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Sky View – Krishan</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Mobile Theme -->
+  <meta name="theme-color" content="#5b7cff">
+
+</head>
+
+<body>
+
+  <!-- Rain Animation -->
+  <div class="rain"></div>
+
+  <!-- Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+
+  <div class="card">
+
+    <header>
+
+      <h1>🌤️ Sky View</h1>
+
+      <span class="by">by Krishan</span>
+
+      <button onclick="toggleTheme()" class="theme">
+        🌙
+      </button>
+
+    </header>
+
+    <!-- Search Section -->
+    <div class="search">
+
+      <input
+        id="cityInput"
+        type="text"
+        placeholder="Enter city"
+        onkeydown="handleEnter(event)"
+      >
+
+      <button onclick="getWeatherByCity()">
+        Search
+      </button>
+
+      <div class="search-actions">
+
+  <button onclick="getWeatherByGPS()">
+    📍
+  </button>
+
+  <button onclick="startVoice()" class="voice">
+    🎤
+  </button>
+
+</div>
+
+    </div>
+
+    <!-- Weather Card -->
+    <div id="weather" class="hidden">
+
+      <h2 id="city"></h2>
+
+      <p id="country"></p>
+
+      <div class="icon" id="icon">
+        ☀️
+      </div>
+
+      <div class="temp">
+        <span id="temp"></span>°C
+      </div>
+
+      <p id="condition"></p>
+
+      <div class="stats">
+
+        <div>
+          💨 <span id="wind"></span> km/h
+        </div>
+
+        <div>
+          💧 <span id="humidity"></span>%
+        </div>
+
+        <div>
+          🌡️ <span id="feels"></span>°C
+        </div>
+
+      </div>
+
+      <button onclick="saveFavourite()" class="fav">
+        ⭐ Save
+      </button>
+
+    </div>
+
+    <!-- 7 Day Forecast -->
+    <div id="forecast" class="forecast"></div>
+
+    <!-- AQI + Sunrise Sunset -->
+    <div class="extra-info">
+
+      <div class="aqi-box">
+        😷 AQI:
+        <span id="aqi">--</span>
+      </div>
+
+      <div class="sun-box">
+        🌅 <span id="sunrise">--</span>
+      </div>
+
+      <div class="sun-box">
+        🌇 <span id="sunset">--</span>
+      </div>
+
+    </div>
+
+    <!-- Favourite Cities -->
+    <div id="favs" class="favs"></div>
+
+    <!-- Error -->
+    <p id="error" class="error"></p>
+
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+
+    if ("serviceWorker" in navigator) {
+
+      navigator.serviceWorker.register("service-worker.js");
+    }
+
+  </script>
+
+</body>
+
+</html>
